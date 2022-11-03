@@ -1,0 +1,1 @@
+// this weather card will be used for multi-day forecasts
