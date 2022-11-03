@@ -29,6 +29,9 @@ export const WeatherSearch = () => {
             console.log("lon: " + json.coord.lon);
             console.log("City: " + json.name);
             console.log("Country: " + json.sys.country);
+            fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${json.coord.lat}&lon=${json.coord.lon}&appid=${API}`)
+            .then(data => data.json())
+            .then(json => console.log(json));
         });
     }
 
