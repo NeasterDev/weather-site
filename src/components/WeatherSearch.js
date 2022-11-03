@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { CurrentWeatherCard } from "./CurrentWeatherCard";
 
 export const WeatherSearch = () => {
     const API = "03c8e245a77af365bd5c0468aae6ab2a";
@@ -6,11 +7,14 @@ export const WeatherSearch = () => {
     const [state, setState] = useState("");
     const [country, setCountry] = useState("");
 
+    const [date, setDate] = useState("");
+    const [currentTemp, setCurrentTemp] = useState("");
+    const [forecastArray, setForcastArray] = useState([]);
+    const [feelsLike, setFeelsLike] = useState("");
+
     const searchForLocation = (e) => {
         e.preventDefault();
-        console.log(city);
-        console.log(state);
-        console.log(country);
+
         let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API}`;
         if (state) {
             if (country) {
@@ -21,17 +25,31 @@ export const WeatherSearch = () => {
                 url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API}`;
             }
         }
+        // we use this fetch to find the lon/lat
         fetch(url)
         .then(data => data.json())
         .then(json => {
-            console.log(json);
-            console.log("lat: " + json.coord.lat);
-            console.log("lon: " + json.coord.lon);
-            console.log("City: " + json.name);
-            console.log("Country: " + json.sys.country);
-            fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${json.coord.lat}&lon=${json.coord.lon}&appid=${API}`)
+            // this fetch to find the weather forecast
+            fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${json.coord.lat}&lon=${json.coord.lon}&units=imperial&appid=${API}`)
             .then(data => data.json())
-            .then(json => console.log(json));
+            .then(json => {
+                // weather forecast data here
+                // get current weather data here
+                console.log("Current Weather: ");
+                console.log(json.current);
+                // 8 day forecast here; 0 - 7, 0 is today
+                console.log("8 Day Forecast weather: ");
+                console.log(json.daily);
+
+                //setDate("11/2/2022");
+                let date = new Date(json.current.dt * 1000);
+                console.log(date.toLocaleDateString("en-US", {month: "short", day: "numeric", year: "numeric"}));
+                // setDate(date.toLocaleDateString("en-US", {month: "short", day: "numeric", year: "numeric"}));
+                setDate(date);
+                setCurrentTemp(json.current.temp);
+                setFeelsLike(json.current.feels_like);
+                setForcastArray(json.daily);
+            })
         });
     }
 
@@ -46,6 +64,13 @@ export const WeatherSearch = () => {
                 </div>
                 <button className='btn-blue' type='submit'>Search</button>
             </form>
+            {date ? <CurrentWeatherCard 
+                        date={date} 
+                        currentTemp={currentTemp}
+                        feelsLike={feelsLike}
+                        forecastArray={forecastArray}
+                    /> 
+            : null}
         </div>
     )
 }
