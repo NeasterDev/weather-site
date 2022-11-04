@@ -16,14 +16,19 @@ export const WeatherSearch = () => {
         e.preventDefault();
 
         let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API}`;
-        if (country) {
-            url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API}`;
+        if (state) {
+            if (country) {
+                url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${state},${country}&appid=${API}`;
+            }
+        } else {
+            if (country) {
+                url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API}`;
+            }
         }
         // we use this fetch to find the lon/lat
         fetch(url)
         .then(data => data.json())
         .then(json => {
-            console.log(json);
             // this fetch to find the weather forecast
             fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${json.coord.lat}&lon=${json.coord.lon}&units=imperial&appid=${API}`)
             .then(data => data.json())
@@ -36,10 +41,9 @@ export const WeatherSearch = () => {
                 console.log("8 Day Forecast weather: ");
                 console.log(json.daily);
 
-                //setDate("11/2/2022");
+                // gets the current date from the unix format
                 let date = new Date(json.current.dt * 1000);
-                console.log(date.toLocaleDateString("en-US", {month: "short", day: "numeric", year: "numeric"}));
-                // setDate(c;
+                // sets the current date, temp, feels like, and daily forcast array
                 setDate(date);
                 setCurrentTemp(json.current.temp);
                 setFeelsLike(json.current.feels_like);
@@ -54,7 +58,8 @@ export const WeatherSearch = () => {
             <form className='search-form' onSubmit={searchForLocation}>
                 <div className="search-container">
                     <input className="search-box" placeholder="City" onChange={(e) => setCity(e.target.value)}/>
-                    <input maxLength="2" className="search-box" placeholder="Country; US, UK etc..." onChange={(e) => setCountry(e.target.value.toLowerCase())}/>
+                    <input className="search-box" placeholder="State" onChange={(e) => setState(e.target.value.toLowerCase())}/>
+                    <input className="search-box" placeholder="Country" onChange={(e) => setCountry(e.target.value.toLowerCase())}/>
                 </div>
                 <button className='btn-blue' type='submit'>Search</button>
             </form>
