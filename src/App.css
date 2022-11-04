@@ -7,19 +7,22 @@
 .App {
   text-align: center;
   background-color: black;
+  max-width: 100vw;
 }
 
 /* class */
 
 .btn-blue {
-  padding: .5rem 2rem;
+  padding: 1.5rem 2rem;
   margin: 1rem;
   background-color: var(--blue-1);
   border-radius: 10px;
   border: 2px solid var(--blue-1);
   font-weight: 800;
-  font-size: large;
+  font-size: 28px;
   color: black;
+  width: 66vw;
+  
 }
 
 /* btn hover effect */
@@ -65,8 +68,10 @@
 
 .search-box {
   border-radius: 10px;
-  padding: .75rem 1rem;
+  padding: 1.75rem 1rem;
   margin: .25rem 1rem;
   color: black;
   font-weight: 600;
+  font-size: 28px;
+  width: 80vw;
 }
