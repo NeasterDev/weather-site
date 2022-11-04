@@ -4,14 +4,19 @@ export const CurrentWeatherCard = ({
   date,
   currentTemp,
   feelsLike,
-  options
+  options,
+  icon,
+  description
 }) => {
 
   return (
-    <div>
-      <div>Current Date: {date.toLocaleDateString("en-US", options)}</div>
-      <div>Current temp: {currentTemp}</div>
-      <div>Current feelslike: {feelsLike}</div>
+    <div className="current-weather-container">
+      <div className="current-date">{date.toLocaleDateString("en-US", options)}</div>
+      <div className="current-temp">
+        <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt="weather icon" />
+        {Math.round(currentTemp)}&#176;
+      </div>
+      <div className="current-feelslike">Feels like {Math.round(feelsLike)}&#176;; {description}</div>
     </div>
   );
 };
