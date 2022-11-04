@@ -33,6 +33,7 @@
 
 .form-title {
   color: var(--blue-1);
+  font-size: 65px;
 }
 
 .search-form-container {
