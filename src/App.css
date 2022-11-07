@@ -84,7 +84,7 @@
   /* background-color: gray; */
   padding: 1rem;
   width: 86vw;
-  border-bottom: 5px solid var(--blue-1);
+
 }
 
 .current-date, .current-temp, .current-feelslike, .current-description {
