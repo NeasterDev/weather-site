@@ -33,6 +33,8 @@
 
 .form-title {
   color: var(--blue-1);
+  background-color: #000;
+  border: none;
   font-size: 3.5rem;
 }
 
@@ -81,6 +83,8 @@
 .current-weather-container {
   /* background-color: gray; */
   padding: 1rem;
+  width: 86vw;
+  border-bottom: 5px solid var(--blue-1);
 }
 
 .current-date, .current-temp, .current-feelslike, .current-description {
@@ -88,17 +92,23 @@
 }
 
 .current-date {
-  text-align: left;
-  font-size: 1.25rem;
+  text-align: center;
+  font-size: 1.5rem;
 }
 
 .current-temp {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.5rem;
+  font-size: 4.5rem;
 }
 
 .current-feelslike {
-  
+  font-size: 1.5rem;
+}
+
+.drop-down-container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
 }

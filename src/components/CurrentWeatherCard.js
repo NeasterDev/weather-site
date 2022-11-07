@@ -11,8 +11,9 @@ export const CurrentWeatherCard = ({
 
   return (
     <div className="current-weather-container">
-      <div className="current-date">{date.toLocaleDateString("en-US", options)}</div>
+      <div className="current-date">Today, {date.toLocaleDateString("en-US", options)}</div>
       <div className="current-temp">
+        
         <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt="weather icon" />
         {Math.round(currentTemp)}&#176;
       </div>
