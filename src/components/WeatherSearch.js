@@ -40,7 +40,7 @@ export const WeatherSearch = () => {
         }
 
         // we use this fetch to find the lon/lat
-        
+
         fetch(url)
             .then((data) => data.json())
             .then((json) => {
@@ -81,20 +81,31 @@ export const WeatherSearch = () => {
 
     const dropdownClickHandler = () => {
         const dropDownContainer = document.querySelector(".drop-down-container");
-        if(dropDownContainer.style.maxHeight) {
+        if (dropDownContainer.style.maxHeight) {
             console.log("hidden");
             dropDownContainer.style.maxHeight = null;
         } else {
             console.log("Block");
-            dropDownContainer.style.maxHeight = dropDownContainer.scrollHeight + "px";
+            dropDownContainer.style.maxHeight = "100%";
         }
     }
 
     useEffect(() => {
         const dropDownContainer = document.querySelector(".drop-down-container");
         dropDownContainer.style.maxHeight = dropDownContainer.scrollHeight + "px";
-        dropDownContainer.style.opacity = "1";
     }, []);
+
+    useEffect(() => {
+        const currentWeatherContainer = document.querySelector(".current-weather-container");
+        if (currentWeatherContainer) {
+            // if (currentWeatherContainer.style.opacity == 0) {
+            //     console.log("Setting opacity to 1");
+            //     currentWeatherContainer.style.opacity = 1;
+            // }
+            currentWeatherContainer.classList.toggle("fade-in");
+        }
+
+    }, [currentTemp]);
 
     return (
         <div className="search-form-container">
@@ -130,12 +141,12 @@ export const WeatherSearch = () => {
                 />
             ) : null}
 
-            {
+            {/* {
                 // if the forecast array has been loaded, load the dailyweathercard
                 forecastArray ? (
                     <DailyWeatherCard forecastArray={forecastArray} options={options} />
                 ) : null
-            }
+            } */}
         </div>
     );
 };

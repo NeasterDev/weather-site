@@ -84,7 +84,17 @@
   /* background-color: gray; */
   padding: 1rem;
   width: 86vw;
+  /* opacity: 0;
+  transition: opacity 0.75s ease-in-out; */
+}
 
+.fade-in {
+  animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
 }
 
 .current-date, .current-temp, .current-feelslike, .current-description {
@@ -110,5 +120,5 @@
 .drop-down-container {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.5s ease-out;
+  transition: max-height 0.25s ease-in-out;
 }
