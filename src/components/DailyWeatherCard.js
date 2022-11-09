@@ -15,6 +15,8 @@ export const DailyWeatherCard = ({ forecastArray }) => {
             {forecastArray.map((weather, index) => {
                 console.log("Weather: " + index);
                 console.log(weather);
+                // skips the first date because we already show to current day 
+                // and the values were different for some reason
                 if (index === 0) { return; }
                 return (
                     // container to hold each indivudal days information
@@ -28,10 +30,12 @@ export const DailyWeatherCard = ({ forecastArray }) => {
                             {Math.round(weather.temp.min)}&#176;/{Math.round(weather.temp.max)}&#176;
 
                         </div>
-                        <div>
-                            <br />
-                            <span>{weather.weather[0].description}</span>
+                        <div className="daily-description">
+                            {weather.weather[0].description}
                         </div>
+                        <br />
+                        <hr />
+                        <br />
                     </div>
                 );
             })}
