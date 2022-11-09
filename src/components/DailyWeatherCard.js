@@ -8,13 +8,14 @@ export const DailyWeatherCard = ({ forecastArray }) => {
         day: "numeric", // 00
         year: "numeric", // 0000
     };
-    
+
     return (
         // container to hold all forecast containers
         <div className="daily-forecast-container">
             {forecastArray.map((weather, index) => {
                 console.log("Weather: " + index);
                 console.log(weather);
+                if (index === 0) { return; }
                 return (
                     // container to hold each indivudal days information
                     <div className="daily-container" key={index}>
@@ -22,9 +23,12 @@ export const DailyWeatherCard = ({ forecastArray }) => {
                         <div className="daily-date">
                             {new Date(weather.dt * 1000).toLocaleDateString("en-US", options)}
                         </div>
-                        <div>
-                            <span>{weather.temp.min}/{weather.temp.max}</span>
+                        <div className="daily-min-max">
                             <img src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`} alt="weather icon" />
+                            {Math.round(weather.temp.min)}&#176;/{Math.round(weather.temp.max)}&#176;
+
+                        </div>
+                        <div>
                             <br />
                             <span>{weather.weather[0].description}</span>
                         </div>

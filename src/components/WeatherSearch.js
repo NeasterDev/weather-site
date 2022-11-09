@@ -78,7 +78,7 @@ export const WeatherSearch = () => {
 
         // if the current height is 0px, set the height to the maximum height 
         // else set it back to 0px
-        if(dropDownHeight == "0px") {
+        if(dropDownHeight === "0px") {
             dropDownContainer.style.height = containerHeight + "px";
         } else {
             dropDownContainer.style.height = "0px";
@@ -86,7 +86,7 @@ export const WeatherSearch = () => {
         
     }
 
-    // assigns the face in class to animate the current weather
+    // toggles the fade in class to animate the current weather
     useEffect(() => {
         const currentWeatherContainer = document.querySelector(".current-weather-container");
         if (currentWeatherContainer) {
@@ -97,6 +97,7 @@ export const WeatherSearch = () => {
 
     // useEffect for when the page loads
     useEffect(() => {
+        // Opens the search form
         dropdownClickHandler();
     }, []);
 
