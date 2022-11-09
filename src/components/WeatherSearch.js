@@ -74,11 +74,14 @@ export const WeatherSearch = () => {
         // the maximum height of the container
         const containerHeight = dropDownContainer.scrollHeight;
         // The current height of the container 
-        const dropDownHeight = dropDownContainer.style.height;
+        const dropDownHeight = dropDownContainer.style.height
 
         // if the current height is 0px, set the height to the maximum height 
         // else set it back to 0px
+        console.log(dropDownContainer);
+        console.log(dropDownHeight);
         if(dropDownHeight === "0px") {
+            console.log("container hieght");
             dropDownContainer.style.height = containerHeight + "px";
         } else {
             dropDownContainer.style.height = "0px";
@@ -97,7 +100,7 @@ export const WeatherSearch = () => {
 
     // useEffect for when the page loads
     useEffect(() => {
-        // Opens the search form
+        dropdownClickHandler()
         dropdownClickHandler();
     }, []);
 

@@ -9,6 +9,8 @@ export const CurrentWeatherCard = ({
   description
 }) => {
 
+  console.log("current weather loaded");
+
   return (
     <div className="current-weather-container">
       <div className="current-date">Today, {date.toLocaleDateString("en-US", options)}</div>

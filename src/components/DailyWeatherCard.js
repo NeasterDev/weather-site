@@ -11,7 +11,7 @@ export const DailyWeatherCard = ({ forecastArray }) => {
 
     return (
         // container to hold all forecast containers
-        <div className="daily-forecast-container">
+        <div className="daily-forecast-container fade-in">
             {forecastArray.map((weather, index) => {
                 console.log("Weather: " + index);
                 console.log(weather);
