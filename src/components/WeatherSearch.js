@@ -79,29 +79,23 @@ export const WeatherSearch = () => {
             });
     };
 
+    // Will handle changing css values to transition
     const dropdownClickHandler = () => {
         const dropDownContainer = document.querySelector(".drop-down-container");
-        if (dropDownContainer.style.maxHeight) {
-            console.log("hidden");
-            dropDownContainer.style.maxHeight = null;
+        const containerHeight = dropDownContainer.scrollHeight;
+        const dropDownHeight = dropDownContainer.style.height;
+        if(dropDownHeight == "0px") {
+            dropDownContainer.style.height = containerHeight + "px";
         } else {
-            console.log("Block");
-            dropDownContainer.style.maxHeight = "100%";
+            dropDownContainer.style.height = "0px";
         }
+        
     }
 
-    useEffect(() => {
-        const dropDownContainer = document.querySelector(".drop-down-container");
-        dropDownContainer.style.maxHeight = dropDownContainer.scrollHeight + "px";
-    }, []);
-
+    // assigns the face in class to animate the current weather
     useEffect(() => {
         const currentWeatherContainer = document.querySelector(".current-weather-container");
         if (currentWeatherContainer) {
-            // if (currentWeatherContainer.style.opacity == 0) {
-            //     console.log("Setting opacity to 1");
-            //     currentWeatherContainer.style.opacity = 1;
-            // }
             currentWeatherContainer.classList.toggle("fade-in");
         }
 
@@ -141,12 +135,12 @@ export const WeatherSearch = () => {
                 />
             ) : null}
 
-            {/* {
+            {
                 // if the forecast array has been loaded, load the dailyweathercard
                 forecastArray ? (
                     <DailyWeatherCard forecastArray={forecastArray} options={options} />
                 ) : null
-            } */}
+            }
         </div>
     );
 };

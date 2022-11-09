@@ -8,6 +8,7 @@
   text-align: center;
   background-color: black;
   max-width: 100vw;
+  height: 100vh;
 }
 
 /* class */
@@ -43,7 +44,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
 }
 
 .form-items-container {
@@ -56,12 +56,7 @@
 }
 
 .form-item {
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: left;
-  width: fit-content;
-  margin: 0 .5rem; */
+
 }
 
 .search-container {
@@ -81,21 +76,21 @@
 
 /* Weather cards */
 .current-weather-container {
-  /* background-color: gray; */
   padding: 1rem;
   width: 86vw;
-  /* opacity: 0;
-  transition: opacity 0.75s ease-in-out; */
 }
 
 .fade-in {
   animation: fadeIn 1s;
 }
 
+/* Keyframes start */
 @keyframes fadeIn {
   0% {opacity: 0;}
   100% {opacity: 1;}
 }
+
+/* keyframes end */
 
 .current-date, .current-temp, .current-feelslike, .current-description {
   color: #fff;
@@ -118,7 +113,14 @@
 }
 
 .drop-down-container {
-  max-height: 0;
+  height: 0px;
   overflow: hidden;
-  transition: max-height 0.25s ease-in-out;
+
+  transition: height 0.5s ease-out;
+}
+
+
+.daily-forecast-container {
+  display: flex;
+  flex-direction: column;
 }

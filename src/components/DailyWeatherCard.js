@@ -10,16 +10,23 @@ export const DailyWeatherCard = ({ forecastArray }) => {
     };
     
     return (
-        <div>
+        // container to hold all forecast containers
+        <div className="daily-forecast-container">
             {forecastArray.map((weather, index) => {
+                console.log("Weather: " + index);
+                console.log(weather);
                 return (
-                    <div key={index}>
-                        <div>
-                            Date:
+                    // container to hold each indivudal days information
+                    <div className="daily-container" key={index}>
+                        {/* need the date, high/low of the day, and the description, ie clouds, rain etc... */}
+                        <div className="daily-date">
                             {new Date(weather.dt * 1000).toLocaleDateString("en-US", options)}
                         </div>
                         <div>
-                            High/Low: {weather.temp.min}/{weather.temp.max}
+                            <span>{weather.temp.min}/{weather.temp.max}</span>
+                            <img src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`} alt="weather icon" />
+                            <br />
+                            <span>{weather.weather[0].description}</span>
                         </div>
                     </div>
                 );
