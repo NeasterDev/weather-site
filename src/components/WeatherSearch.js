@@ -15,10 +15,6 @@ export const WeatherSearch = () => {
     const [currentIcon, setCurrentIcon] = useState("");
     const [currentDescription, setCurrentDescription] = useState("");
 
-
-    // dropdown container for search
-    const dropDownContainer = document.querySelector(".drop-down-container");
-
     // these are the format options for the localeDateString
     const options = {
         month: "short", // Nov
@@ -30,8 +26,7 @@ export const WeatherSearch = () => {
         e.preventDefault();
 
         // closes the search 
-        const dropDownContainer = document.querySelector(".drop-down-container");
-        dropDownContainer.style.maxHeight = null;
+        dropdownClickHandler();
 
         let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API}`;
 
@@ -61,14 +56,7 @@ export const WeatherSearch = () => {
 
                         //setDate("11/2/2022");
                         let date = new Date(json.current.dt * 1000);
-                        console.log(
-                            date.toLocaleDateString("en-US", {
-                                month: "short",
-                                day: "numeric",
-                                year: "numeric",
-                            })
-                        );
-                        // setDate(c;
+
                         setDate(date);
                         setCurrentTemp(json.current.temp);
                         setFeelsLike(json.current.feels_like);
@@ -81,9 +69,15 @@ export const WeatherSearch = () => {
 
     // Will handle changing css values to transition
     const dropdownClickHandler = () => {
+        // Drop down container element
         const dropDownContainer = document.querySelector(".drop-down-container");
+        // the maximum height of the container
         const containerHeight = dropDownContainer.scrollHeight;
+        // The current height of the container 
         const dropDownHeight = dropDownContainer.style.height;
+
+        // if the current height is 0px, set the height to the maximum height 
+        // else set it back to 0px
         if(dropDownHeight == "0px") {
             dropDownContainer.style.height = containerHeight + "px";
         } else {
@@ -100,6 +94,11 @@ export const WeatherSearch = () => {
         }
 
     }, [currentTemp]);
+
+    // useEffect for when the page loads
+    useEffect(() => {
+        dropdownClickHandler();
+    }, []);
 
     return (
         <div className="search-form-container">
