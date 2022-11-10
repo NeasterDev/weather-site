@@ -14,8 +14,11 @@ export class WeatherSearch extends React.Component {
             feelsLike: "",
             currentIcon: "",
             currentDescription: "",
-        }
+        };
+        this.ref = React.createRef();
     }
+
+
 
     API = "03c8e245a77af365bd5c0468aae6ab2a";
 
@@ -87,7 +90,7 @@ export class WeatherSearch extends React.Component {
         // else set it back to 0px
         console.log(dropDownContainer);
         console.log(dropDownHeight);
-        if (dropDownHeight === "0px") {
+        if (dropDownHeight === "0px" || this.ref.current.offsetHeight === 0) {
             console.log("container hieght");
             dropDownContainer.style.height = containerHeight + "px";
         } else {
@@ -105,14 +108,13 @@ export class WeatherSearch extends React.Component {
 
     componentDidMount() {
         this.dropdownClickHandler();
-        this.dropdownClickHandler();
     }
 
     render() {
         return (
             <div className="search-form-container">
                 <button className="form-title dropdown-button" onClick={this.dropdownClickHandler}>Weather</button>
-                <div className="drop-down-container">
+                <div ref={this.ref} className="drop-down-container">
                     <form className="search-form" onSubmit={this.searchForLocation}>
                         <div className="search-container">
                             <input
