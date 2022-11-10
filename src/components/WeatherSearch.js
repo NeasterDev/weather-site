@@ -18,9 +18,13 @@ export class WeatherSearch extends React.Component {
         this.ref = React.createRef();
     }
 
-
-
+    // API Key for openweathermap
     API = "03c8e245a77af365bd5c0468aae6ab2a";
+
+    // I use these instead of the state so that the component doesnt reload when I type 
+    // in the search form
+    city = "";
+    country = "";
 
     // these are the format options for the localeDateString
     options = {
@@ -35,10 +39,10 @@ export class WeatherSearch extends React.Component {
         // closes the search 
         this.dropdownClickHandler();
 
-        let url = `https://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=${this.API}`;
+        let url = `https://api.openweathermap.org/data/2.5/weather?q=${this.city}&appid=${this.API}`;
 
         if (this.country) {
-            url = `https://api.openweathermap.org/data/2.5/weather?q=${this.state.city},${this.state.country}&appid=${this.API}`;
+            url = `https://api.openweathermap.org/data/2.5/weather?q=${this.city},${this.country}&appid=${this.API}`;
         }
 
         // we use this fetch to find the lon/lat
@@ -120,13 +124,13 @@ export class WeatherSearch extends React.Component {
                             <input
                                 className="search-box"
                                 placeholder="City"
-                                onChange={(e) => this.setState({...this.state, city: e.target.value})}
+                                onChange={(e) => this.city = e.target.value}
                             />
                             <input
                                 maxLength="2"
                                 className="search-box"
                                 placeholder="Country; US, UK etc..."
-                                onChange={(e) => this.setState({...this.state, country: e.target.value.toLowerCase()})}
+                                onChange={(e) => this.country = e.target.value.toLowerCase()}
                             />
                         </div>
                         <button className="btn-blue" type="submit">
@@ -134,7 +138,7 @@ export class WeatherSearch extends React.Component {
                         </button>
                     </form>
                 </div>
-                {this.state.date ? (
+                {this.state.currentTemp ? (
                     <CurrentWeatherCard
                         date={this.state.date}
                         currentTemp={this.state.currentTemp}
