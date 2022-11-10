@@ -8,6 +8,7 @@
   text-align: center;
   background-color: black;
   max-width: 100vw;
+  height: 100vh;
 }
 
 /* class */
@@ -43,7 +44,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
 }
 
 .form-items-container {
@@ -56,12 +56,7 @@
 }
 
 .form-item {
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: left;
-  width: fit-content;
-  margin: 0 .5rem; */
+
 }
 
 .search-container {
@@ -78,14 +73,22 @@
   font-size: 28px;
   width: 80vw;
 }
+.fade-in {
+  animation: fadeIn 1s;
+}
 
-/* Weather cards */
+/* Keyframes start */
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+/* keyframes end */
+
+/* Current Weather card */
 .current-weather-container {
-  /* background-color: gray; */
   padding: 1rem;
   width: 86vw;
-  opacity: 0;
-  transition: opacity 0.75s ease-in;
 }
 
 .current-date, .current-temp, .current-feelslike, .current-description {
@@ -108,8 +111,44 @@
   font-size: 1.5rem;
 }
 
+/* This is used to animate the dropdown
+for the city search form */
 .drop-down-container {
-  max-height: 0;
+  height: 0px;
   overflow: hidden;
-  transition: max-height 0.5s ease-out;
+
+  transition: height 0.5s ease-out;
+}
+
+/* Daily forecast styles */
+.daily-forecast-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+  width: 86vw;
+  
+}
+
+.daily-container {
+  padding: 0 1rem 0 1rem;
+  width: 100%;
+}
+
+.daily-date {
+  font-size: 1.5rem;
+}
+
+.daily-min-max {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  font-size: 2.5rem;
+  align-items: center;
+}
+
+.daily-description {
+  margin: 0;
+  padding: 0;
+  font-size: 1.5rem;
 }
