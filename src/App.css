@@ -84,7 +84,8 @@
   /* background-color: gray; */
   padding: 1rem;
   width: 86vw;
-
+  opacity: 0;
+  transition: opacity 0.75s ease-in;
 }
 
 .current-date, .current-temp, .current-feelslike, .current-description {

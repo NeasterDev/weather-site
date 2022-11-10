@@ -15,10 +15,6 @@ export const WeatherSearch = () => {
     const [currentIcon, setCurrentIcon] = useState("");
     const [currentDescription, setCurrentDescription] = useState("");
 
-
-    // dropdown container for search
-    const dropDownContainer = document.querySelector(".drop-down-container");
-
     // these are the format options for the localeDateString
     const options = {
         month: "short", // Nov
@@ -95,6 +91,14 @@ export const WeatherSearch = () => {
         dropDownContainer.style.maxHeight = dropDownContainer.scrollHeight + "px";
         dropDownContainer.style.opacity = "1";
     }, []);
+
+    useEffect(() => {
+        let currentWeatherContainer;
+        if (document.querySelector(".current-weather-container")) {
+            currentWeatherContainer = document.querySelector(".current-weather-container");
+            currentWeatherContainer.style.opacity = 1;
+        }
+    }, [date])
 
     return (
         <div className="search-form-container">
