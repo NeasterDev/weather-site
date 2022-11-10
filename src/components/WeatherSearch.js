@@ -6,8 +6,6 @@ export class WeatherSearch extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            city: "",
-            country: "",
             date: "",
             currentTemp: "",
             forecastArray: [],
@@ -15,6 +13,8 @@ export class WeatherSearch extends React.Component {
             currentIcon: "",
             currentDescription: "",
         };
+        // use this to get data about the search form, specifically the height,
+        // This was used to fix the search form scrolling down on page load
         this.ref = React.createRef();
     }
 
@@ -39,14 +39,13 @@ export class WeatherSearch extends React.Component {
         // closes the search 
         this.dropdownClickHandler();
 
+        // fetch url, with country if they included it
         let url = `https://api.openweathermap.org/data/2.5/weather?q=${this.city}&appid=${this.API}`;
-
         if (this.country) {
             url = `https://api.openweathermap.org/data/2.5/weather?q=${this.city},${this.country}&appid=${this.API}`;
         }
 
         // we use this fetch to find the lon/lat
-
         fetch(url)
             .then((data) => data.json())
             .then((json) => {
@@ -57,20 +56,14 @@ export class WeatherSearch extends React.Component {
                 )
                     .then((data) => data.json())
                     .then((json) => {
-                        // weather forecast data here
-                        // get current weather data here
-                        console.log("Current Weather: ");
-                        console.log(json.current);
-                        // 8 day forecast here; 0 - 7, 0 is today
-                        console.log("8 Day Forecast weather: ");
-                        console.log(json.daily);
-
-                        //setDate("11/2/2022");
+                        //json.daily for weekly forecast 
+                        //json.current for daily forecast
+                        // creates a date and converts it from unix to a readable date
                         let date = new Date(json.current.dt * 1000);
 
                         this.setState({ 
                             ...this.state,
-                            date,
+                            date: date,
                             currentTemp: json.current.temp,
                             feelsLike: json.current.feels_like,
                             forecastArray: json.daily,
@@ -92,10 +85,7 @@ export class WeatherSearch extends React.Component {
 
         // if the current height is 0px, set the height to the maximum height 
         // else set it back to 0px
-        console.log(dropDownContainer);
-        console.log(dropDownHeight);
         if (dropDownHeight === "0px" || this.ref.current.offsetHeight === 0) {
-            console.log("container hieght");
             dropDownContainer.style.height = containerHeight + "px";
         } else {
             dropDownContainer.style.height = "0px";
@@ -138,12 +128,12 @@ export class WeatherSearch extends React.Component {
                         </button>
                     </form>
                 </div>
-                {this.state.currentTemp ? (
+                {this.state.date ? (
                     <CurrentWeatherCard
                         date={this.state.date}
                         currentTemp={this.state.currentTemp}
                         feelsLike={this.state.feelsLike}
-                        options={this.state.options}
+                        options={this.options}
                         icon={this.state.currentIcon}
                         description={this.state.currentDescription}
                     />
