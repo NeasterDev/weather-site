@@ -120,6 +120,19 @@ for the city search form */
   transition: height 0.5s ease-out;
 }
 
+@media only screen and (min-width: 900px) {
+  .current-date, .current-feelslike {
+    font-size: 3rem;
+  }
+
+  .current-temp {
+    font-size: 9rem;
+  }
+}
+
+/* Current weather card end */
+
+
 /* Daily forecast styles */
 .daily-forecast-container {
   display: flex;
@@ -152,3 +165,18 @@ for the city search form */
   padding: 0;
   font-size: 1.5rem;
 }
+
+@media only screen and (min-width: 900px) {
+  .daily-forecast-container {
+    flex-direction: row;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    width: 100vw;
+  }
+
+  .daily-container {
+
+  }
+}
+
+/* Daily forecast style end */

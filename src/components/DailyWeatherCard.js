@@ -13,11 +13,9 @@ export const DailyWeatherCard = ({ forecastArray }) => {
         // container to hold all forecast containers
         <div className="daily-forecast-container fade-in">
             {forecastArray.map((weather, index) => {
-                console.log("Weather: " + index);
-                console.log(weather);
                 // skips the first date because we already show to current day 
                 // and the values were different for some reason
-                if (index === 0) { return; }
+                if (index === 0) { return null; }
                 return (
                     // container to hold each indivudal days information
                     <div className="daily-container" key={index}>

@@ -61,7 +61,7 @@ export class WeatherSearch extends React.Component {
                         // creates a date and converts it from unix to a readable date
                         let date = new Date(json.current.dt * 1000);
 
-                        this.setState({ 
+                        this.setState({
                             ...this.state,
                             date: date,
                             currentTemp: json.current.temp,
@@ -91,6 +91,16 @@ export class WeatherSearch extends React.Component {
             dropDownContainer.style.height = "0px";
         }
 
+    }
+
+    leftScrollHandler = () => {
+        const dailyForecastContainer = document.querySelector(".daily-forecast-container");
+        dailyForecastContainer.scrollLeft -= 1000;
+    }
+
+    rightScrollHandler = () => {
+        const dailyForecastContainer = document.querySelector(".daily-forecast-container");
+        dailyForecastContainer.scrollLeft += 1000;
     }
 
     componentDidUpdate() {
@@ -141,8 +151,14 @@ export class WeatherSearch extends React.Component {
 
                 {
                     // if the forecast array has been loaded, load the dailyweathercard
-                    this.state.forecastArray ? (
-                        <DailyWeatherCard forecastArray={this.state.forecastArray} options={this.options} />
+                    this.state.forecastArray.length ? (
+                        <div>
+                            <DailyWeatherCard forecastArray={this.state.forecastArray} options={this.options} />
+                            <div className="scroll-buttons-container">
+                                <button className="scroll-left" onClick={this.leftScrollHandler}>LEFT</button>
+                                <button className="scroll-right" onClick={this.rightScrollHandler}>RIGHT</button>
+                            </div>
+                        </div>
                     ) : null
                 }
             </div>
