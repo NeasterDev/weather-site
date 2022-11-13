@@ -120,7 +120,7 @@ for the city search form */
   transition: height 0.5s ease-out;
 }
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1200px) {
   .current-date, .current-feelslike {
     font-size: 3rem;
   }
@@ -166,16 +166,22 @@ for the city search form */
   font-size: 1.5rem;
 }
 
-@media only screen and (min-width: 900px) {
+.scroll-left, .scroll-right {
+  opacity: 0;
+}
+
+@media only screen and (min-width: 1200px) {
   .daily-forecast-container {
     flex-direction: row;
+    justify-content: start;
     overflow-x: scroll;
     scroll-behavior: smooth;
     width: 100vw;
+    margin: 0 1rem;
   }
 
-  .daily-container {
-
+  .scroll-left, .scroll-right {
+    opacity: 1;
   }
 }
 
