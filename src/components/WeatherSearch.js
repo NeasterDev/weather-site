@@ -155,8 +155,8 @@ export class WeatherSearch extends React.Component {
                         <div>
                             <DailyWeatherCard forecastArray={this.state.forecastArray} options={this.options} />
                             <div className="scroll-buttons-container">
-                                <button className="scroll-left" onClick={this.leftScrollHandler}>LEFT</button>
-                                <button className="scroll-right" onClick={this.rightScrollHandler}>RIGHT</button>
+                                <button className="scroll-left" onClick={this.leftScrollHandler}>{"<"}</button>
+                                <button className="scroll-right" onClick={this.rightScrollHandler}>{">"}</button>
                             </div>
                         </div>
                     ) : null

@@ -180,8 +180,24 @@ for the city search form */
     margin: 0 1rem;
   }
 
+  .scroll-container {
+    
+  }
+
   .scroll-left, .scroll-right {
-    opacity: 1;
+    opacity: 0.8;
+    padding: 1rem 4rem;
+    margin: 0 .5rem;
+    color: #fff;
+    background-color: var(--blue-1);
+    border: 3px solid var(--blue-1);
+    border-radius: 0.75rem;
+    font-size: 2.5rem;
+  }
+
+  .scroll-left:hover, .scroll-right:hover {
+    background-color: var(--blue-2);
+    cursor: pointer;
   }
 }
 
