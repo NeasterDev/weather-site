@@ -44,17 +44,17 @@
 }
 
 .form-title:hover {
-  animation: color 1s infinite alternate;
+  animation: color 2s infinite alternate;
 }
 
 @keyframes color {
   0% {
     color: var(--blue-1);
-    background-color: #000;
+    /* background-color: #000; */
   }
   100% {
-    color: #000;
-    background-color: var(--blue-1);
+    color: #fff;
+    /* background-color: var(--blue-1); */
   }
 }
 
