@@ -63,6 +63,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 1rem;
 }
 
 .form-items-container {
@@ -244,3 +245,19 @@ for the city search form */
 }
 
 /* Daily forecast style end */
+
+/* error message */
+.error-message {
+  color: #ffa9a9;
+  font-size: 2rem;
+  animation: error 3s infinite alternate;
+  font-weight: 500;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+@keyframes error {
+  to {
+    color: red;
+  }
+}
