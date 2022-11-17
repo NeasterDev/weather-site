@@ -26,12 +26,12 @@ Fully mobile Responsive! Enjoy this weather app on any device and have a very us
 
 ## Installation
 
-`npm install`
+From main directory run `npm install`
 
 
 ## Usage 
 
-From main directory run `cd develop && node index.js`
+From main directory run `npm start`
 
 
 ## License
@@ -42,10 +42,6 @@ https://opensource.org/licenses/MIT
 ## Contributing
 
 Nicholas Easter, Weather data obtained using OpenWeatherMap api https://openweathermap.org/api
-
-## Tests
-
-none
 
 ## Questions
 
