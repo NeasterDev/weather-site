@@ -7,6 +7,15 @@
 
 Use this app to search the weather conditions of over 200,000 cities!
 
+* Created with React
+* Animations created using CSS3
+* Weather data from OpenWeatherMap API
+
+Search using just the city name or specify by country.
+Enjoy the seemless transitions for the search form and load animations for the weather data.
+
+Fully mobile Responsive! Enjoy this weather app on any device and have a very user friendly experience no matter what.
+
 ## Table of Contents
 
 * [Installation](#installation)
